@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0f172b"/>
+  
+  <!-- Circle background for profile -->
+  <circle cx="100" cy="80" r="50" fill="#54a2ff"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="60" r="35" fill="#f5deb3"/>
+  
+  <!-- Admin badge/crown suggestion -->
+  <path d="M 70 35 L 75 20 L 85 30 L 100 15 L 115 30 L 125 20 L 130 35" fill="#ffd236" stroke="#f59e0b" stroke-width="2"/>
+  
+  <!-- Face -->
+  <circle cx="90" cy="55" r="4" fill="#000"/>
+  <circle cx="110" cy="55" r="4" fill="#000"/>
+  
+  <!-- Mouth -->
+  <path d="M 95 70 Q 100 75 105 70" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Body/Shirt -->
+  <path d="M 65 95 L 60 150 Q 60 160 70 160 L 130 160 Q 140 160 140 150 L 135 95 Z" fill="#155dfc"/>
+  
+  <!-- Tie/Badge indicator -->
+  <rect x="95" y="95" width="10" height="20" fill="#ffd236"/>
+  
+  <!-- Arms -->
+  <ellipse cx="50" cy="110" rx="15" ry="25" fill="#f5deb3"/>
+  <ellipse cx="150" cy="110" rx="15" ry="25" fill="#f5deb3"/>
+  
+  <!-- Admin text at bottom -->
+  <text x="100" y="185" font-size="14" font-weight="bold" fill="#54a2ff" text-anchor="middle" font-family="Arial, sans-serif">ADMIN</text>
+</svg>
