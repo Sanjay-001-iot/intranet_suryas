@@ -34,6 +34,7 @@
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.30",
+    "@types/nodemailer": "^7.0.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

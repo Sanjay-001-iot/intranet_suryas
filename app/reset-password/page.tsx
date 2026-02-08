@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const token = searchParams.get('token');
@@ -51,27 +51,35 @@ export default function ResetPasswordPage() {
   };
 
   return (
+    <Card className="w-full max-w-md p-6 space-y-4">
+      <h1 className="text-2xl font-bold text-slate-900">Reset Password</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          type="password"
+          placeholder="New password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="Confirm new password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? 'Resetting...' : 'Reset Password'}
+        </Button>
+      </form>
+    </Card>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-      <Card className="w-full max-w-md p-6 space-y-4">
-        <h1 className="text-2xl font-bold text-slate-900">Reset Password</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            type="password"
-            placeholder="New password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-          <Input
-            type="password"
-            placeholder="Confirm new password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Resetting...' : 'Reset Password'}
-          </Button>
-        </form>
-      </Card>
+      <Suspense fallback={<div className="text-slate-600">Loading...</div>}>
+        <ResetPasswordContent />
+      </Suspense>
     </div>
   );
 }

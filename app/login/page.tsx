@@ -336,7 +336,6 @@ export default function LoginPage() {
                   setGuestEmail('');
                   setGuestDesignation('');
                   setGuestCompany('');
-                  setGuestRole('');
                   setGuestPurpose('');
                 }}
                 className="flex-1"

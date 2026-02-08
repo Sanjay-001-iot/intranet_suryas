@@ -243,7 +243,7 @@ export function getAllUsers(): StoredUser[] {
 export function getPendingUsers(): StoredUser[] {
   console.log('[getPendingUsers] Total users in DB:', users.length);
   users.forEach(u => console.log('  - User:', u.username, 'Status:', u.status));
-  const pending = users.filter((u) => u.status === 'pending_approval' || u.status === 'pending');
+  const pending = users.filter((u) => u.status === 'pending_approval');
   console.log('[getPendingUsers] Pending users found:', pending.length);
   return pending;
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -46,16 +46,24 @@ export default function VerifyEmailPage() {
   }, [searchParams]);
 
   return (
+    <Card className="w-full max-w-md p-6 text-center space-y-4">
+      <h1 className="text-2xl font-bold text-slate-900">Email Verification</h1>
+      <p className="text-slate-600">{message}</p>
+      {status !== 'loading' && (
+        <Button onClick={() => router.push('/login')} className="w-full">
+          Go to Login
+        </Button>
+      )}
+    </Card>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-      <Card className="w-full max-w-md p-6 text-center space-y-4">
-        <h1 className="text-2xl font-bold text-slate-900">Email Verification</h1>
-        <p className="text-slate-600">{message}</p>
-        {status !== 'loading' && (
-          <Button onClick={() => router.push('/login')} className="w-full">
-            Go to Login
-          </Button>
-        )}
-      </Card>
+      <Suspense fallback={<div className="text-slate-600">Loading...</div>}>
+        <VerifyEmailContent />
+      </Suspense>
     </div>
   );
 }
